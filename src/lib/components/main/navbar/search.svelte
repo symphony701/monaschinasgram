@@ -15,7 +15,7 @@
     border: 1px solid #008288;
     color: white;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;

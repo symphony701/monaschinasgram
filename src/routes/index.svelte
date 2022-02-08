@@ -1,11 +1,19 @@
 <script>
 	import Navbar from '../lib/components/main/navbar/navbar.svelte'
+	import Sidebar from '$lib/components/main/sidebar/sidebar.svelte';
+	import Leftbar from '$lib/components/main/leftbar/leftbar.svelte';
+	import Center from '$lib/components/main/center/center.svelte';
 </script>
 
+<svelte:head>
+  <title>Weebgram</title>
+</svelte:head>
 <div class="main">
 	<Navbar/>
 	<div class="content">
-
+		<Sidebar/>
+		<Center/>
+		<Leftbar/>
 	</div>
 </div>
 
@@ -19,7 +27,8 @@
 	.content{
 		max-width: 100%;
 		min-width: 100%;
-		height: calc(100vh - 1px - 4.5rem);
+		height: calc(100vh - 1px - 3.5rem);
 		display: flex;
+		background: #F0F2F5;
 	}
 </style>
