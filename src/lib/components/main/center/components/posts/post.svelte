@@ -12,7 +12,7 @@
   </div>
   <div class="post-content">
     <img
-      src="https://i.pinimg.com/originals/ae/fe/16/aefe16342359793e648e2ce92619d2cf.gif"
+      src="https://c.tenor.com/gDFrYK5sYSEAAAAC/menhera-chan.gif"
       alt="postimage"
     />
   </div>
