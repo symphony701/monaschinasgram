@@ -36,7 +36,7 @@
 <style>
   .post {
     margin-top: 30px;
-    width: 80%;
+    width: 500px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -105,6 +105,7 @@
     justify-content: space-around;
     align-items: center;
     margin-right: 2rem;
+    cursor: pointer;
   }
 
   .icons div p{

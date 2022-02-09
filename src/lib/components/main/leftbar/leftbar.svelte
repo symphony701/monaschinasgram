@@ -1,8 +1,15 @@
-<div class="leftbar" />
+<script>
+  import FriendList from "./friendList.svelte";
+</script>
 
+<div class="leftbar"> 
+  <FriendList />
+</div>
 <style>
+  
   .leftbar {
-    width: calc(15rem - 1px);
+    width: calc(20rem - 1px);
+    max-width: calc(20rem - 1px);
     height: 100%;
     background-color: transparent;
     overflow-y: auto;

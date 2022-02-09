@@ -16,7 +16,7 @@
     font-family: "Montserrat", sans-serif;
   }
   .center {
-    width: calc(100vw - 30rem);
+    width: calc(100vw - 35rem);
     background-color: transparent;
     display: flex;
     flex-direction: column;
