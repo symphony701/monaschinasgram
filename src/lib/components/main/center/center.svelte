@@ -1,10 +1,19 @@
 <script>
   import Poster from "./components/poster.svelte";
   import Post from "./components/posts/post.svelte";
+  import AddPostDialog from "./components/addDialog/addPostDialog.svelte";
+  let activeAddPost = false;
+  const selectPoster = () =>{
+    activeAddPost = true;
+  }
+  const hideAddPost = () =>{
+    activeAddPost = false;
+  }
 </script>
 
 <div class="center">
-  <Poster />
+  <Poster selectPoster={selectPoster} />
+  <AddPostDialog active={activeAddPost} closeAddDialog={hideAddPost} />
   <Post />
   <Post />
   <Post />

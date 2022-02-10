@@ -1,21 +1,29 @@
 <script>
-    import ProfileIcon from '$lib/components/main/navbar/profileIcon.svelte';
+    import ProfileIcon from "$lib/components/main/navbar/profileIcon.svelte";
     import Fa from "svelte-fa";
     import { faImages } from "@fortawesome/free-solid-svg-icons";
+    export let selectPoster;
 </script>
 
-<div>
+<div class="poster-container">
     <ProfileIcon />
-    <input type="text" placeholder="What does your waifu say to your heart?" >
+    <div class="input-container" on:click={() => selectPoster()}>
+        <input
+            type="text"
+            placeholder="What does your waifu say to your heart?"
+            disabled
+        />
+    </div>
+
     <Fa icon={faImages} />
 </div>
 
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-  * {
-    font-family: "Montserrat", sans-serif;
-  }
-    div{
+    * {
+        font-family: "Montserrat", sans-serif;
+    }
+    .poster-container {
         display: flex;
         align-items: center;
         width: 60%;
@@ -28,12 +36,17 @@
         font-size: 1.5rem;
         color: #008288;
     }
-    input{
+    .input-container {
         width: 70%;
+    }
+
+    input {
+        width: 100%;
         border: none;
         outline: none;
         font-size: 1rem;
         padding: 0px;
         border-bottom: 1px solid rgba(65, 65, 65, 0.61);
+        cursor: pointer;
     }
 </style>

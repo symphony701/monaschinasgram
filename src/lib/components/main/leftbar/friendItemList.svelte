@@ -1,9 +1,13 @@
 <script>
+    import { friendChat } from "./storeChat";
     export let friend;
     const { name, image, state } = friend;
+    const selectFriend = () => {
+        friendChat.select(friend);
+    };
 </script>
 
-<div class="item-container">
+<div class="item-container" on:click={()=>selectFriend()}>
     <div class="avatar">
         <img src="{image}" alt="">
     </div>
@@ -22,6 +26,7 @@
         padding: 5px;
         align-items: center;
         margin: 10px 0px;
+        cursor: pointer;
     }
     .state{
         display: flex;
