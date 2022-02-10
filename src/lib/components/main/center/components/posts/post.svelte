@@ -17,7 +17,8 @@
     />
   </div>
   <div class="text-post">
-    <p>Menhera dando animos :v</p>
+    <p>Post de prueba uwu Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae expedita fugit vero suscipit! Omnis quia, veniam ullam eos tenetur expedita perspiciatis, minima, suscipit voluptatem asperiores fugiat quo est dignissimos consequatur.
+    </p>
   </div>
   <div class="footer-post" >
     <div class="icons">

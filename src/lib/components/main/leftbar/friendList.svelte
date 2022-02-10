@@ -36,16 +36,14 @@
       <FriendItemList {friend} />
     {/each}
   </div>
-  <div class="chat-container">
-
-  </div>
+  
 </div>
 
 <style>
   .frindList {
     background-color: #f5f5f5;
     padding: 10px 0px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;

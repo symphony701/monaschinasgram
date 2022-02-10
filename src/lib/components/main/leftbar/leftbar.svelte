@@ -1,9 +1,11 @@
 <script>
   import FriendList from "./friendList.svelte";
+  import ChatContainer from "./chatContainer.svelte";
 </script>
 
 <div class="leftbar"> 
   <FriendList />
+  <ChatContainer />
 </div>
 <style>
   
@@ -17,4 +19,5 @@
     flex-direction: column;
     align-items: center;
   }
+  
 </style>
