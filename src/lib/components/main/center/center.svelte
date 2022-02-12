@@ -9,14 +9,56 @@
   const hideAddPost = () =>{
     activeAddPost = false;
   }
+
+  const takeNewPost = (post) =>{
+    posts.push(post);
+    posts.reverse();
+    posts=posts;
+  }
+
+
+  let posts=[
+    {
+      user:'Nino Nakano',
+      image:'https://source.unsplash.com/category/nature/',
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.',
+      date: '2 days ago',
+      likes: '10',
+      comments: '2',
+    },
+    {
+      user:'Nino Nakano',
+      image:'https://source.unsplash.com/category/nature/',
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.',
+      date: '2 days ago',
+      likes: '10',
+      comments: '2',
+    },
+    {
+      user:'Nino Nakano',
+      image:'https://source.unsplash.com/category/nature/',
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.',
+      date: '2 days ago',
+      likes: '10',
+      comments: '2',
+    },
+    {
+      user:'Nino Nakano',
+      image:'https://source.unsplash.com/category/nature/',
+      text: 'Final lasts for a while',
+      date: '2 days ago',
+      likes: '10',
+      comments: '2',
+    }
+  ]
 </script>
 
 <div class="center">
   <Poster selectPoster={selectPoster} />
-  <AddPostDialog active={activeAddPost} closeAddDialog={hideAddPost} />
-  <Post />
-  <Post />
-  <Post />
+  <AddPostDialog active={activeAddPost} closeAddDialog={hideAddPost} {takeNewPost}/>
+  {#each posts as post}
+    <Post data={post} />
+  {/each}
 </div>
 
 <style>

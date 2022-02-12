@@ -4,8 +4,22 @@
     import { faTimes } from "@fortawesome/free-solid-svg-icons";
     import Avatar from "./avatar.svelte";
     import TextareaPost from "./textareaPost.svelte";
+    import ButtonDialog from "./buttonDialog.svelte";
     export let active;
     export let closeAddDialog;
+    export let takeNewPost;
+    let text;
+    const handleSend = () => {
+        const postData = {
+            user: "Nino Nakano",
+            image: "https://source.unsplash.com/category/nature/",
+            text: text,
+            date: "1 mins ago",
+            likes: "0",
+            comments: "0",
+        };
+        takeNewPost(postData);
+    };
 </script>
 
 {#if active}
@@ -15,9 +29,10 @@
                 ><Fa icon={faTimes} /></button
             >
             <div class="modal-content">
-                <h3>Add omoshiroi post </h3>
+                <h3>Add omoshiroi post</h3>
                 <Avatar name={"Symphony"} />
-                <TextareaPost />
+                <TextareaPost bind:value={text} />
+                <ButtonDialog {handleSend} {closeAddDialog}/>
             </div>
         </div>
     </div>
@@ -42,7 +57,7 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         background-color: white;
         width: 500px;
-        height: 500px;
+        height: 400px;
         padding: 10px 50px;
         position: relative;
     }
@@ -60,9 +75,12 @@
         color: rgb(51, 51, 51);
         cursor: pointer;
     }
-    .modal-content{
+    .modal-content {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        height: 100%;
+        justify-content: space-evenly;
     }
 </style>

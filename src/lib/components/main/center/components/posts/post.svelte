@@ -2,33 +2,37 @@
   import Fa from "svelte-fa";
   import { faHeart, faComment } from "@fortawesome/free-solid-svg-icons";
   import ProfileIcon from "../../../navbar/profileIcon.svelte";
+  export let data;
+  const {user, image,text, likes, comments, date} = data;
+
 </script>
 
 <div class="post">
   <div class="top-post">
     <ProfileIcon />
-    <p class="name">SymphonyRN</p>
-    <p class="time">1 min.</p>
+    <p class="name">{user}</p>
+    <p class="time">{date}</p>
   </div>
   <div class="post-content">
     <img
-      src="https://c.tenor.com/gDFrYK5sYSEAAAAC/menhera-chan.gif"
+      src="{image}"
       alt="postimage"
     />
   </div>
   <div class="text-post">
-    <p>Post de prueba uwu Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae expedita fugit vero suscipit! Omnis quia, veniam ullam eos tenetur expedita perspiciatis, minima, suscipit voluptatem asperiores fugiat quo est dignissimos consequatur.
+    <p>
+      {text}
     </p>
   </div>
   <div class="footer-post" >
     <div class="icons">
       <div class="hearths">
         <Fa icon={faHeart} />
-        <p>0</p>
+        <p>{likes}</p>
       </div>
       <div class="comments">
         <Fa icon={faComment} />
-        <p>0</p>
+        <p> {comments} </p>
       </div>
     </div>
   </div>
