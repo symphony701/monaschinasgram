@@ -1,8 +1,12 @@
 <script>
     export let handleSend;
     export let closeAddDialog;
+    const clickSelect = () =>{
+        handleSend();
+        closeAddDialog()
+    }
 </script>
-<button on:click={()=>{handleSend();closeAddDialog()}} >Post!</button>
+<button on:click={()=>clickSelect()} >Post!</button>
 
 <style>
     button {

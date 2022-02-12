@@ -1,5 +1,6 @@
 <script>
     import { scale } from "svelte/transition";
+    import { v4 as uuidv4 } from "uuid";
     import Fa from "svelte-fa";
     import { faTimes } from "@fortawesome/free-solid-svg-icons";
     import Avatar from "./avatar.svelte";
@@ -12,6 +13,7 @@
     const handleSend = () => {
         const postData = {
             user: "Nino Nakano",
+            id: uuidv4(),
             image: "https://source.unsplash.com/category/nature/",
             text: text,
             date: "1 mins ago",
@@ -19,6 +21,7 @@
             comments: "0",
         };
         takeNewPost(postData);
+        text = '';
     };
 </script>
 

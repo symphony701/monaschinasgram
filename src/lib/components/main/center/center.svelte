@@ -12,14 +12,16 @@
 
   const takeNewPost = (post) =>{
     posts.push(post);
-    posts.reverse();
     posts=posts;
   }
+
+  $:showedPosts = posts.reverse();
 
 
   let posts=[
     {
       user:'Nino Nakano',
+      id:1,
       image:'https://source.unsplash.com/category/nature/',
       text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.',
       date: '2 days ago',
@@ -28,6 +30,7 @@
     },
     {
       user:'Nino Nakano',
+      id:2,
       image:'https://source.unsplash.com/category/nature/',
       text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.',
       date: '2 days ago',
@@ -36,6 +39,7 @@
     },
     {
       user:'Nino Nakano',
+      id:3,
       image:'https://source.unsplash.com/category/nature/',
       text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.',
       date: '2 days ago',
@@ -44,6 +48,7 @@
     },
     {
       user:'Nino Nakano',
+      id:4,
       image:'https://source.unsplash.com/category/nature/',
       text: 'Final lasts for a while',
       date: '2 days ago',
@@ -56,7 +61,7 @@
 <div class="center">
   <Poster selectPoster={selectPoster} />
   <AddPostDialog active={activeAddPost} closeAddDialog={hideAddPost} {takeNewPost}/>
-  {#each posts as post}
+  {#each showedPosts as post (post.id)}
     <Post data={post} />
   {/each}
 </div>

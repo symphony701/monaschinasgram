@@ -13,7 +13,7 @@
 <style>
   .search {
     border: 1px solid #008288;
-    color: white;
+    color: black;
     padding: 10px;
     border-radius: 10px;
     display: flex;
@@ -31,7 +31,7 @@
     border: none;
     border-bottom: 1px solid #008288;
     margin: 0px 15px;
-    color: white;
+    color: black;
   }
   input:focus {
     outline: none;
