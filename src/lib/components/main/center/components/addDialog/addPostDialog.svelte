@@ -3,6 +3,7 @@
     import { v4 as uuidv4 } from "uuid";
     import Fa from "svelte-fa";
     import { faTimes } from "@fortawesome/free-solid-svg-icons";
+    import { loggedUser } from "$lib/components/stores/GeneralStore";
     import Avatar from "./avatar.svelte";
     import TextareaPost from "./textareaPost.svelte";
     import ButtonDialog from "./buttonDialog.svelte";
@@ -12,9 +13,9 @@
     let text;
     const handleSend = () => {
         const postData = {
-            user: "Nino Nakano",
+            user: $loggedUser.nickname,
             id: uuidv4(),
-            image: "https://source.unsplash.com/category/nature/",
+            image: $loggedUser.profile_image,
             text: text,
             date: "1 mins ago",
             likes: "0",
@@ -33,7 +34,7 @@
             >
             <div class="modal-content">
                 <h3>Add omoshiroi post</h3>
-                <Avatar name={"Symphony"} />
+                <Avatar />
                 <TextareaPost bind:value={text} />
                 <ButtonDialog {handleSend} {closeAddDialog}/>
             </div>

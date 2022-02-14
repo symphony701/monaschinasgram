@@ -1,12 +1,13 @@
 <script>
+    import { loggedUser } from "$lib/components/stores/GeneralStore";
     export let name;
 </script>
 <div class="container">
     <div class="avatar">
-        <img src="https://i.pinimg.com/originals/2c/67/80/2c678002e587299b3511cec86382daf1.jpg" alt="">
+        <img src="{$loggedUser.profile_image}" alt="">
     </div>
     <div>
-        <h4>{name}</h4>
+        <h4>{$loggedUser.nickname}</h4>
     </div>
 </div>
 <style>

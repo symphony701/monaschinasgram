@@ -1,6 +1,8 @@
-
+<script>
+    import { loggedUser } from "$lib/components/stores/GeneralStore";
+</script>
 <div class="avatar">
-    <img src="https://i.pinimg.com/originals/2c/67/80/2c678002e587299b3511cec86382daf1.jpg" alt="">
+    <img src="{$loggedUser.profile_image}" alt="">
 </div>
 
 <style>
