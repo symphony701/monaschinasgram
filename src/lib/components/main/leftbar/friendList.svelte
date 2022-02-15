@@ -3,7 +3,7 @@
 
   const friends = [
     {
-      name: "John Cena",
+      name: "Menhera",
       image: "https://c.tenor.com/IMNDZBkct8gAAAAC/anime-girl.gif",
       state: "Online",
     },

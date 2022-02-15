@@ -14,10 +14,12 @@
     <p class="time">{date}</p>
   </div>
   <div class="post-content">
+    {#if (image !=="")}
     <img
       src="{image}"
       alt="postimage"
     />
+    {/if}
   </div>
   <div class="text-post">
     <p>
@@ -85,7 +87,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     padding: 0rem 1rem;
   }
   .footer-post {
@@ -117,6 +119,7 @@
     margin-left: 0.5rem;
     color: black;
     font-size: 1rem;
+    text-align: center;
   }
   
 </style>

@@ -1,6 +1,7 @@
 <script>
     import { scale } from "svelte/transition";
     import { v4 as uuidv4 } from "uuid";
+    import axios from "axios";
     import Fa from "svelte-fa";
     import { faTimes } from "@fortawesome/free-solid-svg-icons";
     import { loggedUser } from "$lib/components/stores/GeneralStore";
@@ -8,22 +9,45 @@
     import TextareaPost from "./textareaPost.svelte";
     import ButtonDialog from "./buttonDialog.svelte";
     import InputImage from "./InputImage.svelte";
+
     export let active;
     export let closeAddDialog;
     export let takeNewPost;
+    let imageIsSelected;
+    let imageSelectedFile;
+
+    const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/adhara123/upload";
+    const presset = "weebgram";
+
     let text;
-    const handleSend = () => {
+    const handleSend = async () => {
+        let image=""
+        console.log(imageIsSelected);
+        console.log(imageSelectedFile);
+        if (imageIsSelected == true) {
+            const formData = new FormData();
+            formData.append("file", imageSelectedFile);
+            formData.append("upload_preset", presset);
+            let response = await axios.post(CLOUDINARY_URL, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            image=response.data.secure_url;
+        }
         const postData = {
             user: $loggedUser.nickname,
             id: uuidv4(),
-            image: $loggedUser.profile_image,
+            image: image,
             text: text,
             date: "1 mins ago",
             likes: "0",
             comments: "0",
         };
         takeNewPost(postData);
-        text = '';
+        text = "";
+        imageIsSelected = false;
+        imageSelectedFile = null;
     };
 </script>
 
@@ -37,8 +61,8 @@
                 <h3>Add omoshiroi post</h3>
                 <Avatar />
                 <TextareaPost bind:value={text} />
-                <InputImage />
-                <ButtonDialog {handleSend} {closeAddDialog}/>
+                <InputImage bind:imageIsSelected bind:imageSelectedFile />
+                <ButtonDialog {handleSend} {closeAddDialog} />
             </div>
         </div>
     </div>
@@ -68,13 +92,13 @@
         position: relative;
         overflow-y: auto;
     }
-    .modal::-webkit-scrollbar{
+    .modal::-webkit-scrollbar {
         width: 11px;
-        background-color: #9DEBCC;
+        background-color: #9debcc;
         border-radius: 5px;
     }
     .modal::-webkit-scrollbar-thumb {
-        background-color: #1B1E2A;
+        background-color: #1b1e2a;
         border-radius: 5px;
         width: 10px;
     }

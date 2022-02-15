@@ -15,6 +15,7 @@
     posts = posts;
   };
 
+
   $: showedPosts = posts.reverse();
 
   let posts = [

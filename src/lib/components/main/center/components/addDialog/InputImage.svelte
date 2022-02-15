@@ -1,20 +1,28 @@
 <script>
     import Fa from "svelte-fa";
     import { faUpload } from "@fortawesome/free-solid-svg-icons";
+    import axios from "axios";
 
     let image;
     let showImage = false;
     let input;
+    export let imageIsSelected = false;
+    export let imageSelectedFile= null;
 
-    const onChange = ()=>{
-        const file = input.files[0];
-        if(file){
+    
+
+    const onChange = async ()=>{
+        imageSelectedFile = input.files[0];
+        imageIsSelected = true;
+        
+        if(imageSelectedFile){
             showImage = true;
+            console.log(imageSelectedFile);
             const reader = new FileReader();
             reader.addEventListener("load" , ()=>{
                 image.setAttribute("src" , reader.result)
             });
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(imageSelectedFile);
             return;
         }
         showImage = false;
