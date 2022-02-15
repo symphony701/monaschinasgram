@@ -3,64 +3,67 @@
   import Post from "./components/posts/post.svelte";
   import AddPostDialog from "./components/addDialog/addPostDialog.svelte";
   let activeAddPost = false;
-  const selectPoster = () =>{
+  const selectPoster = () => {
     activeAddPost = true;
-  }
-  const hideAddPost = () =>{
+  };
+  const hideAddPost = () => {
     activeAddPost = false;
-  }
+  };
 
-  const takeNewPost = (post) =>{
+  const takeNewPost = (post) => {
     posts.push(post);
-    posts=posts;
-  }
+    posts = posts;
+  };
 
-  $:showedPosts = posts.reverse();
+  $: showedPosts = posts.reverse();
 
-
-  let posts=[
+  let posts = [
     {
-      user:'Nino Nakano',
-      id:1,
-      image:'https://source.unsplash.com/category/nature/',
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.',
-      date: '2 days ago',
-      likes: '10',
-      comments: '2',
+      user: "Nino Nakano",
+      id: 1,
+      image: "https://source.unsplash.com/category/nature/",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.",
+      date: "2 days ago",
+      likes: "10",
+      comments: "2",
     },
     {
-      user:'Nino Nakano',
-      id:2,
-      image:'https://source.unsplash.com/category/nature/',
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.',
-      date: '2 days ago',
-      likes: '10',
-      comments: '2',
+      user: "Nino Nakano",
+      id: 2,
+      image: "https://source.unsplash.com/category/nature/",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.",
+      date: "2 days ago",
+      likes: "10",
+      comments: "2",
     },
     {
-      user:'Nino Nakano',
-      id:3,
-      image:'https://source.unsplash.com/category/nature/',
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.',
-      date: '2 days ago',
-      likes: '10',
-      comments: '2',
+      user: "Nino Nakano",
+      id: 3,
+      image: "https://source.unsplash.com/category/nature/",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.",
+      date: "2 days ago",
+      likes: "10",
+      comments: "2",
     },
     {
-      user:'Nino Nakano',
-      id:4,
-      image:'https://source.unsplash.com/category/nature/',
-      text: 'Final lasts for a while',
-      date: '2 days ago',
-      likes: '10',
-      comments: '2',
-    }
-  ]
+      user: "Nino Nakano",
+      id: 4,
+      image: "https://source.unsplash.com/category/nature/",
+      text: "Final lasts for a while",
+      date: "2 days ago",
+      likes: "10",
+      comments: "2",
+    },
+  ];
 </script>
 
 <div class="center">
-  <Poster selectPoster={selectPoster} />
-  <AddPostDialog active={activeAddPost} closeAddDialog={hideAddPost} {takeNewPost}/>
+  <Poster {selectPoster} />
+  <AddPostDialog
+    active={activeAddPost}
+    closeAddDialog={hideAddPost}
+    {takeNewPost}
+  />
   {#each showedPosts as post (post.id)}
     <Post data={post} />
   {/each}
@@ -79,5 +82,15 @@
     align-items: center;
     overflow-y: auto;
     padding-bottom: 2rem;
+  }
+  .center::-webkit-scrollbar {
+    width: 11px;
+    background-color: #9debcc;
+    border-radius: 5px;
+  }
+  .center::-webkit-scrollbar-thumb {
+    background-color: #1b1e2a;
+    border-radius: 5px;
+    width: 10px;
   }
 </style>

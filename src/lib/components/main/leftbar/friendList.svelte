@@ -36,7 +36,6 @@
       <FriendItemList {friend} />
     {/each}
   </div>
-  
 </div>
 
 <style>
@@ -62,14 +61,14 @@
     overflow-y: auto;
     height: 207px;
   }
-  .chat-container {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    width: 100%;
-    border-radius: 10px;
-    overflow-y: auto;
-    height: calc(100vh - 380px);
+  .frindContainer::-webkit-scrollbar {
+    width: 8px;
+    background-color: #9debcc;
+    border-radius: 5px;
+  }
+  .frindContainer::-webkit-scrollbar-thumb {
+    background-color: #1b1e2a;
+    border-radius: 5px;
+    width: 5px;
   }
 </style>

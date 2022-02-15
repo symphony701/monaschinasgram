@@ -1,6 +1,6 @@
 <script>
     import { loggedUser } from "$lib/components/stores/GeneralStore";
-    export let name;
+    
 </script>
 <div class="container">
     <div class="avatar">

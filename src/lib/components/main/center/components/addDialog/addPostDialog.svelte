@@ -7,6 +7,7 @@
     import Avatar from "./avatar.svelte";
     import TextareaPost from "./textareaPost.svelte";
     import ButtonDialog from "./buttonDialog.svelte";
+    import InputImage from "./InputImage.svelte";
     export let active;
     export let closeAddDialog;
     export let takeNewPost;
@@ -36,6 +37,7 @@
                 <h3>Add omoshiroi post</h3>
                 <Avatar />
                 <TextareaPost bind:value={text} />
+                <InputImage />
                 <ButtonDialog {handleSend} {closeAddDialog}/>
             </div>
         </div>
@@ -64,6 +66,17 @@
         height: 400px;
         padding: 10px 50px;
         position: relative;
+        overflow-y: auto;
+    }
+    .modal::-webkit-scrollbar{
+        width: 11px;
+        background-color: #9DEBCC;
+        border-radius: 5px;
+    }
+    .modal::-webkit-scrollbar-thumb {
+        background-color: #1B1E2A;
+        border-radius: 5px;
+        width: 10px;
     }
     .invisible {
         display: none;
@@ -84,7 +97,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100%;
         justify-content: space-evenly;
+        overflow-y: auto;
     }
 </style>

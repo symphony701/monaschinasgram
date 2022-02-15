@@ -13,7 +13,7 @@
         background-color: #00AAA9;
         color: white;
         padding: 10px 20px;
-        margin: 8px 0;
+        margin: 2rem 0;
         border: none;
         cursor: pointer;
         width: 100%;

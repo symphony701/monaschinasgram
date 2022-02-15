@@ -21,7 +21,7 @@
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap");
   h1 {
-    color: #00aaa9;
+    color: #1B1E2A;
     font-size: 1.5rem;
     margin: 0;
     padding: 0;
