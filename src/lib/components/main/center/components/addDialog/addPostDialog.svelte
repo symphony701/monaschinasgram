@@ -1,6 +1,5 @@
 <script>
     import { scale } from "svelte/transition";
-    import { v4 as uuidv4 } from "uuid";
     import axios from "axios";
     import Fa from "svelte-fa";
     import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -21,9 +20,7 @@
 
     let text;
     const handleSend = async () => {
-        let image=""
-        console.log(imageIsSelected);
-        console.log(imageSelectedFile);
+        let image="";
         if (imageIsSelected == true) {
             const formData = new FormData();
             formData.append("file", imageSelectedFile);
@@ -36,13 +33,11 @@
             image=response.data.secure_url;
         }
         const postData = {
-            user: $loggedUser.nickname,
-            id: uuidv4(),
+            userId: $loggedUser.id,
             image: image,
             text: text,
-            date: "1 mins ago",
-            likes: "0",
-            comments: "0",
+            nLikes: 0,
+            nComments: 0,
         };
         takeNewPost(postData);
         text = "";

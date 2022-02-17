@@ -1,4 +1,6 @@
 <script>
+  import axios from "axios";
+  import { onMount } from 'svelte';
   import Poster from "./components/poster.svelte";
   import Post from "./components/posts/post.svelte";
   import AddPostDialog from "./components/addDialog/addPostDialog.svelte";
@@ -10,52 +12,45 @@
     activeAddPost = false;
   };
 
-  const takeNewPost = (post) => {
-    posts.push(post);
-    posts = posts;
+
+  let fetchPosts = [];
+  let posts = [];
+
+  onMount(async () => {
+    const response = await axios.get("http://127.0.0.1:5000/posts/getall");
+    posts = response.data;
+    console.log(posts);
+  });
+
+
+
+
+
+
+  const takeNewPost = async (posting) => {
+    try {
+      const add = await axios.post("http://127.0.0.1:5000/posts/add", posting);
+      const response = await axios.get("http://127.0.0.1:5000/posts/getall");
+      posts = response.data;
+    } catch (error) {
+      alert("Something went wrong");
+      posts = await getData();
+    }
   };
 
+  
+  const getData = async () => {
+    try {
+      const response = await axios.get("http://127.0.0.1:5000/posts/getall");
+      console.log(response);
+      const fetchetPosts = response.data;
+      return fetchetPosts.posts;
+    } catch (e) {
+      console.log(e);
+      alert("Something went wrong with the server =( ");
+    }
+  };
 
-  $: showedPosts = posts.reverse();
-
-  let posts = [
-    {
-      user: "Nino Nakano",
-      id: 1,
-      image: "https://source.unsplash.com/category/nature/",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.",
-      date: "2 days ago",
-      likes: "10",
-      comments: "2",
-    },
-    {
-      user: "Nino Nakano",
-      id: 2,
-      image: "https://source.unsplash.com/category/nature/",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.",
-      date: "2 days ago",
-      likes: "10",
-      comments: "2",
-    },
-    {
-      user: "Nino Nakano",
-      id: 3,
-      image: "https://source.unsplash.com/category/nature/",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.",
-      date: "2 days ago",
-      likes: "10",
-      comments: "2",
-    },
-    {
-      user: "Nino Nakano",
-      id: 4,
-      image: "https://source.unsplash.com/category/nature/",
-      text: "Final lasts for a while",
-      date: "2 days ago",
-      likes: "10",
-      comments: "2",
-    },
-  ];
 </script>
 
 <div class="center">
@@ -65,9 +60,10 @@
     closeAddDialog={hideAddPost}
     {takeNewPost}
   />
-  {#each showedPosts as post (post.id)}
-    <Post data={post} />
-  {/each}
+  
+    {#each posts as post (post._id)}
+      <Post data={post} />
+    {/each}
 </div>
 
 <style>

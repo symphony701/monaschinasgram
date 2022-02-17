@@ -1,24 +1,31 @@
 <script>
   import Fa from "svelte-fa";
   import { faHeart, faComment } from "@fortawesome/free-solid-svg-icons";
-  import ProfileIcon from "../../../navbar/profileIcon.svelte";
+  import PostProfileIcon from "./PostProfileIcon.svelte";
+  import moment from 'moment'
   export let data;
-  const {user, image,text, likes, comments, date} = data;
-
+  const {
+    _id,
+    createdAt,
+    nComments,
+    nLikes,
+    nickname,
+    profile_image,
+    text,
+    userId,
+    image,
+  } = data;
 </script>
 
 <div class="post">
   <div class="top-post">
-    <ProfileIcon />
-    <p class="name">{user}</p>
-    <p class="time">{date}</p>
+    <PostProfileIcon image={profile_image} />
+    <p class="name">{nickname}</p>
+    <p class="time">{moment(createdAt).fromNow()}</p>
   </div>
   <div class="post-content">
-    {#if (image !=="")}
-    <img
-      src="{image}"
-      alt="postimage"
-    />
+    {#if image !== ""}
+      <img src={image} alt="postimage" />
     {/if}
   </div>
   <div class="text-post">
@@ -26,15 +33,15 @@
       {text}
     </p>
   </div>
-  <div class="footer-post" >
+  <div class="footer-post">
     <div class="icons">
       <div class="hearths">
         <Fa icon={faHeart} />
-        <p>{likes}</p>
+        <p>{nLikes}</p>
       </div>
       <div class="comments">
         <Fa icon={faComment} />
-        <p> {comments} </p>
+        <p>{nComments}</p>
       </div>
     </div>
   </div>
@@ -99,14 +106,14 @@
     height: auto;
     padding: 0rem 0rem;
   }
-  .icons{
+  .icons {
     display: flex;
     justify-content: flex-start;
     width: 95%;
     font-size: 1.7rem;
-    color: #55C6C6;
+    color: #55c6c6;
   }
-  .icons div{
+  .icons div {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -115,11 +122,10 @@
     cursor: pointer;
   }
 
-  .icons div p{
+  .icons div p {
     margin-left: 0.5rem;
     color: black;
     font-size: 1rem;
     text-align: center;
   }
-  
 </style>
