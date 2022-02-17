@@ -3,9 +3,9 @@
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
 
+	import Leftbar from './../lib/components/main/leftbar/Leftbar.svelte';
   import Navbar from "../lib/components/main/navbar/navbar.svelte";
-  import Sidebar from "$lib/components/main/sidebar/sidebar.svelte";
-  import Leftbar from "$lib/components/main/leftbar/leftbar.svelte";
+  import Rightbar from "../lib/components/main/rightbar/right.svelte";
   import Center from "$lib/components/main/center/center.svelte";
   onMount(() => {
     if ($loggedUser === null) {
@@ -21,9 +21,9 @@
   <div class="main">
     <Navbar />
     <div class="content">
-      <Sidebar />
-      <Center />
       <Leftbar />
+      <Center />
+      <Rightbar />
     </div>
   </div>
 {/if}

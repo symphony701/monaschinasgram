@@ -11,7 +11,6 @@
         try{
             let response = await SignInService.signIn(user,password);
             loggedUser.signin(new User(response._id,response.nickname,response.profile_image));
-            console.log($loggedUser);
             goto('/');
         }catch(e){
             invalidData = true;
