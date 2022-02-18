@@ -1,17 +1,25 @@
 <script>
     import { goto } from "$app/navigation";
     import { loggedUser } from '$lib/components/stores/GeneralStore';
+    import { browser } from "$app/env";
     import SignInService from '$lib/components/signin/service';
     import User from '$lib/components/interfaces/UserInterface';
+    
+    import { userWrote, passwordWrote } from '$lib/components/stores/GeneralStore';
     let user = "";
     let password = "";
     let invalidData = false;
 
     const signinHandle = async ()=>{
         try{
-            let response = await SignInService.signIn(user,password);
-            loggedUser.signin(new User(response._id,response.nickname,response.profile_image));
-            goto('/');
+            if(user!=='' && password !== ''){
+                let response = await SignInService.signIn(user,password);
+                const userResponsed  = new User(response._id,response.nickname,response.profile_image);
+                loggedUser.signin( userResponsed );
+                $userWrote = user;
+                $passwordWrote = password;
+                goto('/');
+            }
         }catch(e){
             invalidData = true;
         }

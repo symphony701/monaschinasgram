@@ -1,14 +1,32 @@
 <script>
-  import { loggedUser } from "$lib/components/stores/GeneralStore";
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
-
-	import Leftbar from './../lib/components/main/leftbar/Leftbar.svelte';
+  import Leftbar from "./../lib/components/main/leftbar/Leftbar.svelte";
   import Navbar from "../lib/components/main/navbar/navbar.svelte";
   import Rightbar from "../lib/components/main/rightbar/right.svelte";
   import Center from "$lib/components/main/center/center.svelte";
-  onMount(() => {
-    if ($loggedUser === null) {
+  import {
+    userWrote,
+    passwordWrote,
+    loggedUser,
+  } from "$lib/components/stores/GeneralStore";
+  import SignInService from "$lib/components/signin/service";
+  import User from "$lib/components/interfaces/UserInterface";
+
+  let verified = false;
+  onMount(async () => {
+    try {
+      const response = await SignInService.signIn($userWrote, $passwordWrote);
+      const userVerified = new User(
+        response._id,
+        response.nickname,
+        response.profile_image
+      );
+      loggedUser.signin(userVerified);
+      console.log(userVerified);
+      verified = true;
+    } catch (e) {
+      console.log(e);
       goto("/signin");
     }
   });
@@ -17,7 +35,7 @@
 <svelte:head>
   <title>Weebgram</title>
 </svelte:head>
-{#if $loggedUser !== null}
+{#if verified}
   <div class="main">
     <Navbar />
     <div class="content">
@@ -45,5 +63,4 @@
     display: flex;
     background: #f0f2f5;
   }
-  
 </style>
